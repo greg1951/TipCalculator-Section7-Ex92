@@ -7,7 +7,10 @@ export default function App() {
       <TipCalculator />
     </div>
   );
-
+  /*
+  Created this high-level component so the imput fields would behave properly.
+  (I was losing the cursor on every character entered in the check amount field.)
+*/
   function TipCalculator() {
     const [billAmount, setBillAmount] = useState("");
     const [party1Pct, setParty1Pct] = useState(0);
@@ -44,7 +47,7 @@ export default function App() {
       <div>
         <label>What is the check amount?</label>
         <input
-          type="text"
+          type="number"
           placeholder="Bill Amount"
           value={billAmount}
           onChange={(e) => onBillChange(Number(e.target.value))}
@@ -70,11 +73,13 @@ export default function App() {
     );
   }
   function FinalPayment({ billAmount, tip }) {
+    const numTotal = billAmount + tip;
+    const fmtdTotal = numTotal.toFixed(2);
     return (
       <div>
-        <h3>
-          Pay total: ${billAmount + tip} (Check: ${billAmount} + Tip: ${tip})
-        </h3>
+        <h4>
+          Pay total: ${fmtdTotal} (Check: ${billAmount} + Tip: ${tip})
+        </h4>
       </div>
     );
   }
