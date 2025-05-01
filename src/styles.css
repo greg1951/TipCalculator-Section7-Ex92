@@ -2,14 +2,12 @@
   font-family: sans-serif;
   text-align: left;
 }
-body {
-  padding: 5px;
-}
+
 form {
   vertical-align: text-bottom;
   text-align: left;
 }
 label {
-  width: 280px;
+  width: 350px;
   display: inline-block;
 }
