@@ -13,8 +13,8 @@ export default function App() {
 */
   function TipCalculator() {
     const [billAmount, setBillAmount] = useState("");
-    const [party1Pct, setParty1Pct] = useState(0);
-    const [party2Pct, setParty2Pct] = useState(0);
+    const [party1Pct, setParty1Pct] = useState(-1);
+    const [party2Pct, setParty2Pct] = useState(-1);
 
     const tip = billAmount * ((party1Pct + party2Pct) / 2 / 100);
 
@@ -36,8 +36,8 @@ export default function App() {
       </div>
     );
     function handleReset() {
-      setParty1Pct(0);
-      setParty2Pct(0);
+      setParty1Pct(-1);
+      setParty2Pct(-1);
       setBillAmount("");
     }
   }
@@ -59,10 +59,11 @@ export default function App() {
     return (
       <div>
         <label>{children}</label>
-        <select
+        <select required
           value={percent}
           onChange={(e) => onSelect(Number(e.target.value))}
         >
+          <option value="-1">Please rate the service</option>
           <option value="0">HORRIBLE</option>
           <option value="5">NOT GOOD</option>
           <option value="10">OK</option>
